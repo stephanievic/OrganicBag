@@ -2,7 +2,7 @@ let menu = document.getElementById("menu-nav");
 let iconCart = document.querySelector("#icon-cart");
 let cart = document.querySelector("#cart");
 let qtdItem = document.querySelector(".qtd-item");
-
+let closeCart = document.querySelector("#close-cart");
 
 //contador do carrinho
 function countProduct(id) {
@@ -16,11 +16,7 @@ document.addEventListener("scroll", () => {
   menu.style.backgroundColor = positionY <= 700 ? "transparent" : "#8fa793";
 });
 
-//mostrar carrinho
-iconCart.addEventListener("click", () =>{
-  cart.classList.remove("hide");
+//mostrar e fechar carrinho
+iconCart.addEventListener("click", () => {cart.classList.remove("hide")});
+closeCart.addEventListener("click", () => {cart.classList.add("hide")});
 
-});
-
-//
-qtdItem.addEventListener("click")
