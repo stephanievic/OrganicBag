@@ -227,7 +227,7 @@ i{
 }
 
 .qtd-item{
-    width: 40%;
+    width: 50%;
     background-color: transparent;
     text-align: center;
     border: none;
@@ -252,6 +252,11 @@ i{
 .add, .sub {
     font-size: 1.2em;
     font-weight: bolder;
+}
+
+.remove-button, .add-button{
+    background-color: transparent;
+    border: none;
 }
 
 .continue {
