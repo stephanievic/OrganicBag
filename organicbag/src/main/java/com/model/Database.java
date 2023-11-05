@@ -92,4 +92,52 @@ public class Database {
             return null;
         }
     }
+
+    //buscar usuário pelo email
+    public void searchUser(User user) {
+        String search = "select * from usuarios where email = ?";
+
+        try {
+            Connection con = connect();
+
+            PreparedStatement pst = con.prepareStatement(search);
+            pst.setString(1, user.getEmail());
+
+            ResultSet rs = pst.executeQuery();
+
+            while(rs.next()) {
+                user.setCpf(Long.parseLong(rs.getString(1)));
+                user.setName(rs.getString(2));
+                user.setEmail(rs.getString(3));
+                user.setPhone(rs.getString(4));
+                user.setProfile(rs.getString(5));
+                user.setPassword(rs.getString(6));
+            }
+
+            con.close();
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    //alterar campo
+    public void updateData(User user) {
+        String update = "update usuarios set senha = ? where email = ?";
+
+        try {
+            Connection con = connect();
+
+            PreparedStatement pst = con.prepareStatement(update);
+            pst.setString(1, user.getPassword());
+            pst.setString(2, user.getEmail());
+
+            pst.executeUpdate();
+
+            con.close();
+            
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
 }
